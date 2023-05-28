@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React App Demo_Maybucks</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+
+//Home Component 
+function Home() {
+  const [items, setItems] = React.useState([]);
+  const [selectedItemId, setSelectedItemId] = React.useState(null);
+
+  React.useEffect(()=> {
+    fetch('/maybucks').then(res => res.json()).then(data => {
+      setItems(data)
+    })
+  }, []);
+
+
+  const handleItemClick = (itemId) => {
+    setSelectedItemId(itemId);
+  }
+
+  function handleClearClick() {
+    setSelectedItemId(null);
+  }
+
+  function handleEditSave(newItem) {
+    fetch(`/maybucks/${newItem.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({...newItem, calorie: Number(newItem.calorie), price: Number(newItem.price)}),
+    }).then(res => {
+      if (res.ok) {
+        alert("Success!")
+      } else {
+        alert('Failed to update an item.')
+      }
+    })
+  }
+
+  function handleDelete(item) {
+    console.log("run")
+    fetch(`/maybucks/${item.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(res => {
+      if (res.ok) {
+        alert("Success!")
+      } else {
+        alert('Failed to delete an item.')
+      }
+    })
+  }
+
+
+  if (items.length === 0) {
+    return 'Loading items'
+  }
+
+  return (
+    <div>
+      <h1>Maybucks Inventory Management System</h1>
+      <ul>
+        {items.map(item => (
+          <>
+            <li key={item.id} onClick={() => {handleItemClick(item.id)}}>
+              {item.name}
+            </li>
+            {selectedItemId===item.id && <Detail item={item} setItems={setItems} onEditSave={handleEditSave} onDelete={handleDelete} />}
+          </>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+
+// Detail component
+function Detail({ item, setItems, onEditSave, onDelete }) {
+  const [currentItem, setCurrentItem] = React.useState(null);
+  
+  React.useEffect(()=> {
+    fetch(`/maybucks/${item.id}`).then(res => res.json()).then((data)=> {
+      setCurrentItem(data);
+    })
+  }, [])
+
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setCurrentItem(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
+  }
+
+  function handleSaveClick() {
+    setItems(prevState => {
+      const newState = prevState.map(item => {
+        if (item.id === currentItem.id) {
+          return {...currentItem, id: item.id};
+        }
+        return item;
+      })
+      return newState;
+    });
+    onEditSave(currentItem);
+  }
+
+  function handleDeleteClick() {
+    setItems(prevState => {
+      const newState = prevState.filter(item => {
+        return item.id !== currentItem.id;
+      })
+      return newState
+    });
+    onDelete(currentItem);
+  }
+
+  function handleClearClick() {
+    setCurrentItem(prev=> {
+      return {
+        ...prev,
+        name: '',
+        price: '',
+        calorie: '',
+      }
+    })
+  }
+
+  if (!currentItem) {
+    return null
+  }
+
+  return (
+  <>
+    <div id="currentdetail">
+      <h1>{item.name}</h1>
+      <p id="detail_info">Price: {item.price}</p>
+      <p id="detail_info">Ingredients: {item.ingredients}</p>
+      <p id="detail_info">Availability: {item.available ? "In stock" : "Out of stock"}</p>
+    </div>
+    
+    <div id="detailchange">
+      <p>Update inventory</p>
+      <hr />
+      <h2>{item.name}</h2>
+      <form>
+        <label htmlFor="name">Name:</label>
+        <input
+          type="text"
+          name="name"
+          value={currentItem.name}
+          onChange={handleInputChange}
+        />
+
+        <label htmlFor="price">Price:</label>
+        <input
+          type="number"
+          name="price"
+          value={currentItem.price}
+          onChange={handleInputChange}
+        />
+
+        <label htmlFor="calorie">Calorie:</label>
+        <input
+          type="number"
+          name="calorie"
+          value={currentItem.calorie}
+          onChange={handleInputChange}
+        />
+
+        <button type="button" onClick={handleSaveClick}>
+          Save
+        </button>
+
+        <button type="button" onClick={handleDeleteClick}>
+          Delete
+        </button>
+
+        <button type="button" onClick={handleClearClick}>
+          Clear
+        </button>
+      </form>
+    </div>
+  </>
+  );
+}
+
+ReactDOM.render(<Home />, document.getElementById('root'));
+
+</script>
+</body>
+</html>

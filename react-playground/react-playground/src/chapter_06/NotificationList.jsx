@@ -17,6 +17,7 @@ const reservedNotifications = [
 ]
 
 var timer;
+
 class NotificationList extends React.Component {
     constructor(props) {
         super(props);
@@ -42,6 +43,16 @@ class NotificationList extends React.Component {
                 clearInterval(timer);
             }
         }, 1000);
+    }
+
+    // #버튼: 백엔드 초록->빨강->초록
+
+    componentDidUpdate(){
+
+    }
+
+    componentWillUnmount(){
+
     }
 
     render() {

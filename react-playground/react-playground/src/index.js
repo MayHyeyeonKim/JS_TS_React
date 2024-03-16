@@ -7,7 +7,8 @@ import reportWebVitals from "./reportWebVitals";
 // import CommentList from "./chapter_05/CommentList";
 // import NotificationList from './chapter_06/NotificationList';
 // import Accommodate from "./chapter_07/Accommodate";
-import ConfirmButton from './chapter_08/ConfirmButton'
+// import ConfirmButton from './chapter_08/ConfirmButton'
+import ConfirmButton2 from "./chapter_08/ConfirmButton2";
 
   const root = ReactDOM.createRoot(document.getElementById("root"));
   root.render(
@@ -17,7 +18,7 @@ import ConfirmButton from './chapter_08/ConfirmButton'
       {/* <CommentList /> */}
       {/* <NotificationList /> */}
       {/* <Accommodate /> */}
-      <ConfirmButton />
+      <ConfirmButton2 />
     </React.StrictMode>,
     document.getElementById("root")
   );

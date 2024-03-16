@@ -9,7 +9,8 @@ import reportWebVitals from "./reportWebVitals";
 // import Accommodate from "./chapter_07/Accommodate";
 // import ConfirmButton from './chapter_08/ConfirmButton'
 // import ConfirmButton2 from "./chapter_08/ConfirmButton2";
-import LandingPage from "./chapter_09/LandingPage";
+// import LandingPage from "./chapter_09/LandingPage";
+import AttendanceBook from "./\bchapter_10/AttendanceBook";
 
   const root = ReactDOM.createRoot(document.getElementById("root"));
   root.render(
@@ -20,7 +21,8 @@ import LandingPage from "./chapter_09/LandingPage";
       {/* <NotificationList /> */}
       {/* <Accommodate /> */}
       {/* <ConfirmButton2 /> */}
-      <LandingPage />
+      {/* <LandingPage /> */}
+      <AttendanceBook />
     </React.StrictMode>,
     document.getElementById("root")
   );

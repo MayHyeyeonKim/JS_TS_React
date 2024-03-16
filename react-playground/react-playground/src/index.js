@@ -10,7 +10,8 @@ import reportWebVitals from "./reportWebVitals";
 // import ConfirmButton from './chapter_08/ConfirmButton'
 // import ConfirmButton2 from "./chapter_08/ConfirmButton2";
 // import LandingPage from "./chapter_09/LandingPage";
-import AttendanceBook from "./\bchapter_10/AttendanceBook";
+// import AttendanceBook from "./\bchapter_10/AttendanceBook";
+import SignUp from "./chapter_11/SignUp";
 
   const root = ReactDOM.createRoot(document.getElementById("root"));
   root.render(
@@ -22,7 +23,8 @@ import AttendanceBook from "./\bchapter_10/AttendanceBook";
       {/* <Accommodate /> */}
       {/* <ConfirmButton2 /> */}
       {/* <LandingPage /> */}
-      <AttendanceBook />
+      {/* <AttendanceBook /> */}
+      <SignUp />
     </React.StrictMode>,
     document.getElementById("root")
   );

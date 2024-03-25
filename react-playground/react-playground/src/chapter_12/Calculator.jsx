@@ -62,3 +62,5 @@ function Calculator(props) {
 }
 
 export default Calculator;
+
+// when the name of a function component begins with a lowercase letter, React does not recognize it as a component but it as a general function

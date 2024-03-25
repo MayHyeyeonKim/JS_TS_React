@@ -54,7 +54,7 @@ function Calculator(props) {
             <TemperatureInput
                 scale="f"
                 temperature={fahrenheit}
-                onTemperatureChange={handleCelsiusChange}
+                onTemperatureChange={handleFahrenheitChange}
             />
             <BoilingVerdict celsius={parseFloat(celsius)} />
         </div>

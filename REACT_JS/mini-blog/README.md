@@ -17,5 +17,4 @@ Features needed for a mini blog
 - Comment writing function
 
 ## Initial Draft
-![Initial Draft](https://github.com/MayHyeyeonKim/JS_TS_React/tree/blob/main/REACT_JS/images/initialDraft.png)
-![memberService](https://github.com/MayHyeyeonKim/maycore/blob/main/images/classDiagram.png)
+![Initial Draft](https://github.com/MayHyeyeonKim/JS_TS_React/blob/main/REACT_JS/mini-blog/images/initialDraft.png)

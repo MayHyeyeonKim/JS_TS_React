@@ -1,5 +1,7 @@
 # React hands-on project - mini blog
 
+<!-- npx create-react-app mini-blog -->
+<!-- npm install --save react-router-dom styled-components -->
 Run the web application in development mode.
 ```
 $ npm start
@@ -18,3 +20,4 @@ Features needed for a mini blog
 
 ## Initial Draft
 ![Initial Draft](https://github.com/MayHyeyeonKim/JS_TS_React/blob/main/REACT_JS/mini-blog/images/initialDraft.png)
+

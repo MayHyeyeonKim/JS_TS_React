@@ -1,0 +1,164 @@
+[
+    {
+        "id": 1,
+        "title": "Rendering Lists in React",
+        "content": "Hello, this is May.\nIn this post, we will learn how to render lists in React.\nTo render lists, we use the map function provided by JavaScript arrays.",
+        "comments": [
+            {
+                "id": 11,
+                "content": "When you actually develop, it seems like you use the map function a lot. 😄"
+            },
+            {
+                "id": 12,
+                "content": "After applying it, the code became really concise. Hehe"
+            },
+            {
+                "id": 13,
+                "content": "It seems like you have to put in a key for each item~"
+            },
+            {
+                "id": 14,
+                "content": "It feels like productivity is increasing a lot. Keke"
+            },
+            {
+                "id": 15,
+                "content": "Thank you for another great post today! 👍"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Understanding Conditional Rendering in React",
+        "content": "Hello, this is ShibaChuchu.\nIn this post, let's learn about conditional rendering in React.\nConditional rendering means rendering differently depending on conditions.",
+        "comments": [
+            {
+                "id": 21,
+                "content": "I didn't know there was a way to use it like this!"
+            },
+            {
+                "id": 22,
+                "content": "Thank you for the great post. Hehe"
+            },
+            {
+                "id": 23,
+                "content": "I've always used only ?, but now I should try && too."
+            },
+            {
+                "id": 24,
+                "content": "Thank you for the easy explanation. 😁"
+            },
+            {
+                "id": 25,
+                "content": "I'll apply it directly to the code!!"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Let's Learn about React Hooks",
+        "content": "Hello, this is PikaChuchu.\nIn this post, let's learn about React hooks.\nHooks are used to interfere with the flow of function components in React to perform various tasks.",
+        "comments": [
+            {
+                "id": 31,
+                "content": "It was a difficult concept, but after reading the post, I feel like I've organized it a bit."
+            },
+            {
+                "id": 32,
+                "content": "I wondered what a hook was, but it turned out to be this. Thank you for letting me know. Hehe"
+            },
+            {
+                "id": 33,
+                "content": "When I first encountered hooks, it was too difficult, but thank you! 👍"
+            },
+            {
+                "id": 34,
+                "content": "I think I can use it well in the future."
+            },
+            {
+                "id": 35,
+                "content": "Hooks, which are difficult from the name... 🥲"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Introduction to React Components",
+        "content": "In this post, I would like to explain about React components.\nEven those who have studied React a little would know that React is based on components.\nThen what exactly are components?",
+        "comments": [
+            {
+                "id": 41,
+                "content": "It's nice to be able to understand the concept that was confusing. Keke"
+            },
+            {
+                "id": 42,
+                "content": "Thank you for the easy explanation about components. 👏"
+            },
+            {
+                "id": 43,
+                "content": "Thank you for helping me understand the concept better! 👍"
+            },
+            {
+                "id": 44,
+                "content": "React is component-based, so it's highly reusable and really great."
+            },
+            {
+                "id": 45,
+                "content": "React is the best!! 👍"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Introduction to My First React Course",
+        "content": "Hello, this is CokiChuchu.\nToday, I would like to introduce the React course I created.\nThe name of the course is 'My First React'.\nAs you may have felt from the name, it is a course for React beginners.",
+        "comments": [
+            {
+                "id": 51,
+                "content": "The course is great~!"
+            },
+            {
+                "id": 52,
+                "content": "It's easy for beginners to understand. 😃"
+            },
+            {
+                "id": 53,
+                "content": "I'm doing the practice along with the lecture, and it's great."
+            },
+            {
+                "id": 54,
+                "content": "Thank you for the great course! 👍👍"
+            },
+            {
+                "id": 55,
+                "content": "Oh, there was such a course~"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Hello, This is Sofl.",
+        "content": "Welcome to my blog.\nI will try to post informative articles frequently from now on!",
+        "comments": [
+            {
+                "id": 61,
+                "content": "Please post a lot! 👍"
+            },
+            {
+                "id": 62,
+                "content": "Wow, this is great. Hehe"
+            },
+            {
+                "id": 63,
+                "content": "React is too difficult for meㅠㅠ😂"
+            },
+            {
+                "id": 64,
+                "content": "I'm listening to your lectures well, Sofl~!"
+            },
+            {
+                "id": 65,
+                "content": "Please continue to be active on your blog!! 😄"
+            }
+        ]
+    }
+]

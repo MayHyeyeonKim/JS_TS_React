@@ -17,6 +17,10 @@ const Wrapper = styled.div`
     }
 `;
 
+const TitleText = styled.p`
+    font-size: 20px;
+    font-weight: 500;
+`;
 
 function PostListItem(props) {
     const { post, onClick } = props;

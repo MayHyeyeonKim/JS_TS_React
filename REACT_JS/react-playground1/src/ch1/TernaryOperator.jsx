@@ -21,3 +21,4 @@ function TernaryOperator() {
 }
 
 export default TernaryOperator
+

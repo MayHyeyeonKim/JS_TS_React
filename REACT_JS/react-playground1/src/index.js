@@ -6,6 +6,7 @@ import Practice from './ch1/Practice';
 import Destructuring from './ch1/Destructuring';
 import RestParam from './ch1/RestParam';
 import TernaryOperator from './ch1/TernaryOperator';
+import State from './ch2/State';
 import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +21,9 @@ root.render(
     <br />
     <div>-------------------</div>
     <TernaryOperator />
+    <br />
+    <div>-------------------</div>
+    <State />
   </React.StrictMode>
 );
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <p>
+        <label for="zip"> ZIP code: </label>
+        <input type="text" id="zip" maxlength="5">
+        <button id="search">Search</button>
+    </p>
+    <div id="weather"></div>
+    <script>
+        function getWeather() {
+            let zip = document.getElementById("zip").value;
+            let endpoint = "https://api.openweathermap.org/data/2.5/weather";
+            let apiKey = "YOURAPI";
+            let queryString = "zip=" + zip + "&units=imperial&appid=" + apiKey;
+            let url = endpoint + "?" + queryString;
+
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener("load", responseReceivedHandler);
+            xhr.responseType = "json";
+            xhr.open("GET", url);
+            xhr.send();
+        }
+
+        function responseReceivedHandler() {
+            let weatherInfo = document.getElementById("weather");
+            if(this.status === 200){
+                weatherInfo.innerHTML =
+                    "<p>Current temp: " + this.response.main.temp + " &deg;F</p>" +
+                    "<p>Desc: " + this.response.weather[0].description + "</p>" +
+                    "<p>Humidity: " + this.response.main.humidity + "%</p>";
+            } else {
+                weatherInfo.innerHTML = "Weather data unavailable.";
+            }
+        }
+        document.getElementById("search").addEventListener("click", getWeather);
+
+    </script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Box from './component/Box';
+import Button from './component/Button';
 
 //1. 2boxes (title, image, result-value)
 //2. rock paper scissors buttons
@@ -62,9 +63,9 @@ function App() {
         <Box title="Computer" item={computerSelect} result={result}/>
       </div>
       <div className='main'>
-        <button onClick={() => play("rock")}>rock</button>
-        <button onClick={() => play("paper")}>paper</button>
-        <button onClick={() => play("scissors")}>scissors</button>
+        <Button onClick={play} choice="rock" />
+        <Button onClick={play} choice="paper" />
+        <Button onClick={play} choice="scissors" />
       </div>
     </div>
   );

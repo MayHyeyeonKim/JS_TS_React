@@ -4,9 +4,22 @@
     justify-content: center;
 }
 
-.box{
+/* .box{
     border: 1px solid black;
     width: 500px;
+} */
+
+.box {
+    border: 10px solid rgb(53, 52, 52);
+    border-radius: 10%;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    margin: 20px;
+    opacity: 80%;
 }
 
 .item-img{
@@ -14,16 +27,20 @@
 }
 
 .win{
-    border: 10px solid green;
-    color: green;
+    border: 10px solid rgb(168, 237, 205);
+    color: rgb(0, 128, 79);
 }
 
 .lose{
-    border: 10px solid red;
-    color: red;
+    border: 10px solid rgb(249, 167, 167);
+    color: rgb(163, 35, 35);
 }
 
-.tie{
+/* .tie{
     border: 10px solid black;
     color: black;
+} */
+.tie{
+    border: 10px solid rgb(53, 52, 52);
+    color: rgb(34, 34, 34);
 }

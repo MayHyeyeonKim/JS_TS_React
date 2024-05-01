@@ -1,8 +1,9 @@
 import React from 'react'
+import './Button.css';
 
 const Button = ({ onClick, choice }) => {
   return (
-    <button onClick={()=>onClick(choice)}>
+    <button className="button" onClick={()=>onClick(choice)}>
         {choice}
     </button>
   );

@@ -1,5 +1,6 @@
 // rafce
 import React from 'react'
+import './Box.css'
 
 const Box = (props) => {
     // console.log(props)

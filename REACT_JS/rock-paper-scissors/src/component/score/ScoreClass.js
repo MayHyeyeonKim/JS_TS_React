@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class ScoreClass extends Component {
+    componentWillUnmount(){
+        console.log("componentWillUnmount ByeBye")
+    }
+
     render() {
         return (
             <div className='score'>

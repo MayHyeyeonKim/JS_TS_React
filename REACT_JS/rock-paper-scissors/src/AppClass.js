@@ -28,6 +28,7 @@ export default class AppClass extends Component {
             userScore: 0,
             computerScore: 0,
         };
+        console.log("constructor")
     }
 
     play = (userChoice)=>{
@@ -37,6 +38,7 @@ export default class AppClass extends Component {
             computerSelect: computerChoice,
             result: this.judgement(choice[userChoice], computerChoice),
         });
+        console.log("play", this.state);
     };
 
     randomeChoice = () =>{
@@ -44,6 +46,7 @@ export default class AppClass extends Component {
         let randomItem = Math.floor(Math.random() * itemArray.length);
         let final = itemArray[randomItem];
         return choice[final];
+        console.log("randomeChoice", this.state);
     };
 
     judgement = (user, computer) => {
@@ -60,14 +63,22 @@ export default class AppClass extends Component {
             this.setState({computerScore: this.state.computerScore + 1});
             return "lose";
           }
+          console.log("judgement", this.state);
     };
+    componentDidMount(){
+      console.log("componentDidMount")
+    }
+    componentDidUpdate(){
+      console.log("componentDidUpdate", this.state);
+    }
   render() {
+    console.log("render")
     return (
         <div className="app-main">
         <div className="main">Class Fun Rock Paper Scissors</div>
         <div className="score-main">
           <ScoreClass label="User Score" score={this.state.userScore} />
-          <ScoreClass label="Computer Score" score={this.state.computerScore} />
+          {this.state.userScore < 3 && <ScoreClass label="Computer Score" score={this.state.computerScore} />}
         </div>
         <div className="box-main">
           <BoxClass title="You" item={this.state.userSelect} result={this.state.result} />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Box from "./component/box/Box";
 import Button from "./component/button/Button";
@@ -65,8 +65,18 @@ function App() {
     console.log(final);
     return choice[final];
   };
+
+  useEffect(()=>{
+    console.log("useEffect1 Fireeee");
+  }, []);
+
+  useEffect(()=>{
+    console.log("useEffect2 Fireee!!", userScore, "-", computerScore)
+  },[userScore, computerScore])
+
   return (
     <div className="app-main">
+      {console.log("render하는 곳")}
       <div className="main">Class Fun Rock Paper Scissors</div>
       <div className="score-main">
         <Score label="User Score" score={userScore} />

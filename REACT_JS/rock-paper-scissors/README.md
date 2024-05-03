@@ -1,6 +1,7 @@
 # Rock Paper Scissors Mini Project
 
-[Rock Paper Scissors](https://github.com/MayHyeyeonKim/JS_TS_React/tree/main/REACT_JS/rock-paper-scissors/rock_paper_scissors.gif)
+<img src="https://github.com/MayHyeyeonKim/JS_TS_React/blob/main/REACT_JS/rock-paper-scissors/rock_paper_scissors.gif?raw=true" alt="Rock Paper Scissors GIF" />
+
 
 ## Design Layout with Figma
 

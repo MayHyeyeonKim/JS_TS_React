@@ -18,6 +18,7 @@ const Box = (props) => {
         <h1> {props.title} </h1>
         <h2> {props.item && props.item.name}</h2>
         <img className='item-img' src={props.item && props.item.img}/>
+        {console.log("Loading image:", props.item.img)}
         <h2>{result}</h2>
     </div>
   )

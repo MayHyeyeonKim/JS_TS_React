@@ -1,5 +1,5 @@
 .box-main{
-    margin-top: 100px;
+    margin-top: 10px;
     display: flex;
     justify-content: center;
 }
@@ -7,20 +7,25 @@
 @media (max-width: 600px) {
     .box-main {
         flex-direction: column;
-        margin: 100px;
+        margin: 10px 10px;
+    }
+
+    .box {
+        width: 300px;
+        padding: 5px;
     }
 }
 
 .box {
-    border: 10px solid rgb(53, 52, 52);
+    border: 10px solid rgb(124, 121, 121);
     border-radius: 10%;
     width: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 10px;
-    margin: 20px;
+    /* padding: 10px; */
+    margin: 10px;
     opacity: 80%;
 }
 
@@ -29,7 +34,7 @@
 }
 
 .win{
-    border: 10px solid rgb(168, 237, 205);
+    border: 10px solid rgb(237, 212, 168);
     color: rgb(0, 128, 79);
 }
 
@@ -39,6 +44,6 @@
 }
 
 .tie{
-    border: 10px solid rgb(53, 52, 52);
-    color: rgb(34, 34, 34);
+    border: 10px solid rgb(132, 204, 203);
+    color: rgb(108, 106, 106);
 }

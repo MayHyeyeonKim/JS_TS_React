@@ -33,11 +33,11 @@
   }
 
   .score p {
-    font-size: 16px;
+    font-size: 1rem;
     color: #333;
     margin-right: 10px;
     font-size: 24px;
     font-weight: bold;
-    color: #007bff;
+    color: #7b91f3;
   }
   

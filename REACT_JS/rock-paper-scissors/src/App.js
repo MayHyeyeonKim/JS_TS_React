@@ -60,9 +60,9 @@ function App() {
     let itemArray = Object.keys(choice); //객체에 키값만 뽑아서 어레이로 만들어주는 함수다
     let randomItem = Math.floor(Math.random() * itemArray.length);
     let final = itemArray[randomItem];
-    console.log(randomItem);
-    console.log(itemArray);
-    console.log(final);
+    // console.log(randomItem);
+    // console.log(itemArray);
+    // console.log(final);
     return choice[final];
   };
 

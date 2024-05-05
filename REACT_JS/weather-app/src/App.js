@@ -23,7 +23,7 @@ function App() {
   }
 
   const getWeatherByCurrentLocation = async(lat,lon) => {
-    let apiKey = "a557e05092bad9766a488cdb17c610d9"
+    let apiKey = "YOURAPI"
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
     let response = await fetch(url)
     let data = await response.json();

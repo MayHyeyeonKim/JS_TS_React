@@ -1,0 +1,27 @@
+body {
+    background: url(https://codemyui.com/wp-content/uploads/2019/10/Simple-Weather-Animation-In-SVG.gif);
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.weather-box {
+    border: 10px solid azure;
+    padding: 50px;
+    border-radius: 10%;
+    background-color: azure;
+    margin: 10px;
+}
+
+.button-container {
+    display: flex;
+    gap:10px;
+}

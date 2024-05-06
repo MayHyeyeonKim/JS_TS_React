@@ -15,7 +15,7 @@ body {
 
 .weather-box {
     border: 10px solid azure;
-    padding: 50px;
+    padding: 50px 100px;
     border-radius: 10%;
     background-color: azure;
     margin: 10px;

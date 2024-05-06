@@ -11,7 +11,7 @@ import WeatherButton from './component/WeatherButton';
 // 5. When the current location-based weather button is clicked, the weather based on the current location is displayed again.
 // 6. A loading spinner appears while the data is being fetched
 function App() {
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather] = useState(null)
   const [city, setCity] = useState('');
   const cities = ['Seoul', 'New York', 'Paris', 'Sydney']
   const getCurrentLocation=()=>{
@@ -24,21 +24,31 @@ function App() {
   }
 
   const getWeatherByCurrentLocation = async(lat,lon) => {
-    let apiKey = "YOURAPI"
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
-    let response = await fetch(url)
+    let apiKey = process.env.REACT_APP_API_KEY;
+    let url =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    let response = await fetch(url);
     let data = await response.json();
     setWeather(data)
     console.log("data", data)
   }
-
+  const getWeatherByCity= async()=>{
+    let apiKey = process.env.REACT_APP_API_KEY;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    let response = await fetch(url);
+    let data = await response.json();
+    setCity(data)
+    console.log(data)
+  }
+  
   useEffect(()=>{
     getCurrentLocation()
   },[])
 
   useEffect(()=>{
     console.log("city??", city)
+    // getWeatherByCity()
   },[city])
+
   return (
     <div>
       <div className='container'>

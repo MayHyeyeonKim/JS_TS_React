@@ -1,5 +1,5 @@
 # Weather app Project
-<img src="https://github.com/MayHyeyeonKim/JS_TS_React/blob/main/REACT_JS/rock-paper-scissors/weather.gif?raw=true"/>
+<img src="https://github.com/MayHyeyeonKim/JS_TS_React/blob/main/REACT_JS/weather-app/weather.gif"/>
 
 ## Errors Encountered and Solution
 

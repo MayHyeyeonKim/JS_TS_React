@@ -1,4 +1,4 @@
-## errors that I met
+## Errors Encountered and Solution
 
 ``` JavaScript
   useEffect(()=>{

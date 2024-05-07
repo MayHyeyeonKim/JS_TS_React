@@ -1,62 +1,95 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState, useEffect } from 'react';
-import WeatherBox from './component/WeatherBox';
-import WeatherButton from './component/WeatherButton';
+import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import { Container } from "react-bootstrap";
+import WeatherButton from "./components/WeatherButton";
+import WeatherBox from "./components/WeatherBox";
+import { ClipLoader } from "react-spinners";
 
-// 1. As soon as the app is launched, the locatioon-based weather is displayed
-// 2. Show the weather condition of the city in Celsius and Fahenheit at the same time
-// 3. five buttons (one is current location, the other four are different cities)
-// 4. Each time the city button is clicked, the weather for that city is displayed.
-// 5. When the current location-based weather button is clicked, the weather based on the current location is displayed again.
-// 6. A loading spinner appears while the data is being fetched
-function App() {
-  const [weather, setWeather] = useState(null)
-  const [city, setCity] = useState('');
-  const cities = ['Seoul', 'New York', 'Paris', 'Sydney']
-  const getCurrentLocation=()=>{
-    navigator.geolocation.getCurrentPosition((position)=>{
-      let lat = position.coords.latitude;
-      let lon = position.coords.longitude;
-      getWeatherByCurrentLocation(lat, lon)
-      // console.log("현재 위치", weather_api)
-    });
-  }
+const cities = ["sydney", "paris", "new york", "seoul"];
+const API_KEY = process.env.REACT_APP_API_KEY;
 
-  const getWeatherByCurrentLocation = async(lat,lon) => {
-    let apiKey = process.env.REACT_APP_API_KEY;
-    let url =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-    let response = await fetch(url);
-    let data = await response.json();
-    setWeather(data)
-    console.log("data", data)
-  }
-  const getWeatherByCity= async()=>{
-    let apiKey = process.env.REACT_APP_API_KEY;
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    let response = await fetch(url);
-    let data = await response.json();
-    // console.log(data)
-    setWeather(data);
-  }
-  
-  useEffect(()=>{
-    if(city==""){
-      getCurrentLocation();
-    }else{
-      getWeatherByCity();
+const App = () => {
+  const [loading, setLoading] = useState(false);
+  const [city, setCity] = useState(null);
+  const [weather, setWeather] = useState(null);
+  const [apiError, setAPIError] = useState("");
+
+  const getWeatherByCurrentLocation = async (lat, lon) => {
+    try {
+      let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      setWeather(data);
+      setLoading(false);
+    } catch (err) {
+      setAPIError(err.message);
+      setLoading(false);
     }
-  },[city])
+  };
 
+  const getCurrentLocation = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      getWeatherByCurrentLocation(latitude, longitude);
+    });
+  };
+
+  const getWeatherByCity = async () => {
+    try {
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      setWeather(data);
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+      setAPIError(err.message);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+     if (city == null) {
+       setLoading(true);
+       getCurrentLocation();
+     } else {
+    setLoading(true);
+    getWeatherByCity();
+     }
+  }, [city]);
+
+  const handleCityChange = (city) => {
+    if (city === "current") {
+      setCity(null);
+    } else {
+      setCity(city);
+    }
+  };
 
   return (
-    <div>
-      <div className='container'>
-        <WeatherBox weather={weather}/>
-        <WeatherButton cities={cities} setCity={setCity}/>
-      </div>
-    </div>
+    <>
+      <Container className="vh-100">
+        {loading ? (
+          <div className="w-100 vh-100 d-flex justify-content-center align-items-center">
+            <ClipLoader color="#f86c6b" size={150} loading={loading} />
+          </div>
+        ) : !apiError ? (
+          <div class="main-container">
+            <WeatherBox weather={weather} />
+            <WeatherButton
+              cities={cities}
+              handleCityChange={handleCityChange}
+              selectedCity={city}
+            />
+          </div>
+        ) : (
+          apiError
+        )}
+      </Container>
+    </>
   );
-}
-
+};
 export default App;

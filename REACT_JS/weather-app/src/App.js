@@ -36,18 +36,18 @@ function App() {
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     let response = await fetch(url);
     let data = await response.json();
-    setCity(data)
-    console.log(data)
+    // console.log(data)
+    setWeather(data);
   }
   
   useEffect(()=>{
-    getCurrentLocation()
-  },[])
-
-  useEffect(()=>{
-    console.log("city??", city)
-    // getWeatherByCity()
+    if(city==""){
+      getCurrentLocation();
+    }else{
+      getWeatherByCity();
+    }
   },[city])
+
 
   return (
     <div>

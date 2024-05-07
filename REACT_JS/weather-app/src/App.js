@@ -52,13 +52,13 @@ const App = () => {
   };
 
   useEffect(() => {
-     if (city == null) {
-       setLoading(true);
-       getCurrentLocation();
-     } else {
-    setLoading(true);
-    getWeatherByCity();
-     }
+    if (city == null) {
+      setLoading(true);
+      getCurrentLocation();
+    } else {
+      setLoading(true);
+      getWeatherByCity();
+    }
   }, [city]);
 
   const handleCityChange = (city) => {

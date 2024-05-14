@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div>
-      <Navbar isLoggedIn={isLoggedIn} handleLogin={handleLogin} handleLogout={handleLogout}/>
+      <Navbar />
       <Routes>
         <Route path="/" element={ isLoggedIn ? <ProductAll /> : <Navigate to = "/login" />}/>
         <Route path="/login" element={<LoginPage handleLogin={handleLogin} />}/>

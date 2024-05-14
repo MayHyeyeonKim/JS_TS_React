@@ -3,7 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import ProductAll from './page/ProductAll';
 import LoginPage from './page/LoginPage';
 import ProductDetail from './page/ProductDetail';
+import Navbar from './component/Navbar';
 //1. Product Page, Login, Product Detail Page ✅
+// 1-1 navigation bar
 //2. On the Product Page, all products can be viewed
 //3. When the login button is pressed, the login page is displayed
 //4. If the product detail is pressed without being logged in, the login page will appear first. If logged in, the product detail page can be viewed.
@@ -15,6 +17,7 @@ import ProductDetail from './page/ProductDetail';
 function App() {
   return (
     <div>
+      <Navbar />
       <Routes>
         <Route path="/" element={<ProductAll />}/>
         <Route path="/login" element={<LoginPage />}/>

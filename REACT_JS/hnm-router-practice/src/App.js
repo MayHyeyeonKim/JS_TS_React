@@ -1,9 +1,11 @@
 import './App.css';
-import { Routes, Route } from "react-router-dom";
+import { useState } from 'react'
+import { Routes, Route, Navigate } from "react-router-dom";
 import ProductAll from './page/ProductAll';
 import LoginPage from './page/LoginPage';
 import ProductDetail from './page/ProductDetail';
 import Navbar from './component/Navbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 //1. Product Page, Login, Product Detail Page ✅
 // 1-1 navigation bar
 //2. On the Product Page, all products can be viewed
@@ -15,13 +17,24 @@ import Navbar from './component/Navbar';
 //8. Products can be searched.
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    console.log("handleLogin함수가 실행됨")
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  }
+
   return (
     <div>
-      <Navbar />
+      <Navbar isLoggedIn={isLoggedIn} handleLogin={handleLogin} handleLogout={handleLogout}/>
       <Routes>
-        <Route path="/" element={<ProductAll />}/>
-        <Route path="/login" element={<LoginPage />}/>
-        <Route path="/product/:id" element={<ProductDetail />}/>
+        <Route path="/" element={ isLoggedIn ? <ProductAll /> : <Navigate to = "/login" />}/>
+        <Route path="/login" element={<LoginPage handleLogin={handleLogin} />}/>
+        <Route path="/product/:id" element={isLoggedIn ? <ProductDetail /> : <Navigate to = "/login" />}/>
       </Routes>
     </div>
   );

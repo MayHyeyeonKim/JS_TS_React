@@ -1,3 +1,4 @@
+
 .login-button{
     display: flex;
     justify-content: flex-end;
@@ -43,4 +44,48 @@
 .search-icon{
     color: #000;
     font-size: 16px;
+}
+
+.product-card{
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover{
+    transform: scale(1.1);
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    background-color: #ffffff; /* White background */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slightly stronger shadow */
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    margin: auto; /* Center the container horizontally */
+}
+
+.login-container h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.login-container button {
+    background-color: #007bff; /* Blue button background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }

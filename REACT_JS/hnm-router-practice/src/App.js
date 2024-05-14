@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from "react-router-dom";
 import ProductAll from './page/ProductAll';
 import LoginPage from './page/LoginPage';
@@ -19,6 +19,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // useEffect(()=>{
+  //   console.log(isLoggedIn)
+  // },[isLoggedIn])
+
   const handleLogin = () => {
     setIsLoggedIn(true);
     console.log("handleLogin함수가 실행됨")
@@ -33,7 +37,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={ isLoggedIn ? <ProductAll /> : <Navigate to = "/login" />}/>
-        <Route path="/login" element={<LoginPage handleLogin={handleLogin} />}/>
+        <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />}/>
         <Route path="/product/:id" element={isLoggedIn ? <ProductDetail /> : <Navigate to = "/login" />}/>
       </Routes>
     </div>

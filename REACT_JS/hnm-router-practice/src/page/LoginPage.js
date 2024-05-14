@@ -2,10 +2,15 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-const LoginPage = ({ handleLogin }) => {
+import { useNavigate } from "react-router-dom";
+
+const LoginPage = ({setIsLoggedIn}) => {
+  const Navigate = useNavigate();
   const loginUser = (event) => {
     event.preventDefault();
     console.log("login function issued!")
+    setIsLoggedIn(true);
+    Navigate('/');
   };
 
   return (

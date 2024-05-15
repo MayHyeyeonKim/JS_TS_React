@@ -19,12 +19,20 @@ async function run() {
     // const findUser = await users.find({}).toArray();
     // console.log("findUser result => ", findUser)
 
-    const findUser = await users.findOne({age:{$gt: 300}});
-    console.log("findUser result => ", findUser)
+    // const findUser = await users.findOne({age:{$gt: 300}});
+    // console.log("findUser result => ", findUser)
 
     // const findUser = await users.find({age:{$gt: 300}}).toArray();
     // console.log("findUser result => ", findUser)
 
+    // const updateUser = await users.updateOne(
+    //     {name:'Maychu' },
+    //     {$set: {age:18} }
+    // );
+
+    // const deleteUsers = await users.deleteMany({age: {$gt: 20}});
+    const userDate = await users.find({name: "Maychu"}).project({_id:0, name:0}).toArray();
+    console.log(userDate);
 }
 
 

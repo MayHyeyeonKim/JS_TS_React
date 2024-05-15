@@ -31,12 +31,12 @@ const userSchema = new Schema({
     }
 });
 
-const User = mongoose.model("User", userSchema)
+const User2 = mongoose.model("User2", userSchema)
 
-// const newUser = new User({name:"Maymay", email: "hkim@gmail.com", password:"  abcde", age:3});
+// const newUser = new User2({name:"Chuchu", email: "chuchu@gmail.com", password:"  abcde", age:32});
 // newUser.save().then(val => console.log(val))
 
 // User.find().then(val => console.log("all data", val))
-User.find({name: 'Maymay'})
+User2.find({name: 'Maymay'})
 .select("name -_id")
 .then(val => console.log("all data", val))

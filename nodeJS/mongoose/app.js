@@ -31,12 +31,12 @@ const userSchema = new Schema({
     }
 });
 
-const User2 = mongoose.model("User2", userSchema)
+const User2 = mongoose.model("User2", userSchema) //괄호안 첫번쨰인자가 몽고디비/데이터베이스 mongoose-test/컬렉션 user2 임. 대문자로 첫번쨰 인자 설정해도 소문자로 들어감
 
 // const newUser = new User2({name:"Chuchu", email: "chuchu@gmail.com", password:"  abcde", age:32});
 // newUser.save().then(val => console.log(val))
 
 // User.find().then(val => console.log("all data", val))
-User2.find({name: 'Maymay'})
+User2.find({name: 'Chuchu'})
 .select("name -_id")
 .then(val => console.log("all data", val))

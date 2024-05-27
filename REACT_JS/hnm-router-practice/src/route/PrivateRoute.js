@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom'
 
 const PrivateRoute = ({isLoggedIn}) => {
     const location = useLocation();
+    console.log("lll", location);
   return isLoggedIn?( <ProductDetail/> ) : ( <Navigate to="/login" replace state={{to:location}} />)
 }
 

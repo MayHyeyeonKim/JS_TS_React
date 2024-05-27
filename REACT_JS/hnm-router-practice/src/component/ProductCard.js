@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 
 const ProductCard = ({item}) => {
   const Navigate = useNavigate();
-  const showDetail = (id)=>{
-    Navigate(`/product/${id}`);
+  const showDetail = ()=>{
+    Navigate(`/product/${item.id}`);
   }
   return (
     <div className='product-card' onClick={showDetail}>

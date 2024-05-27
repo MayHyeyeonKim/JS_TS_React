@@ -6,6 +6,7 @@ import LoginPage from './page/LoginPage';
 import ProductDetail from './page/ProductDetail';
 import Navbar from './component/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import PrivateRoute from './route/PrivateRoute';
 //1. Product Page, Login, Product Detail Page ✅
 // 1-1 navigation bar
 //2. On the Product Page, all products can be viewed
@@ -23,22 +24,22 @@ function App() {
   //   console.log(isLoggedIn)
   // },[isLoggedIn])
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-    console.log("handleLogin함수가 실행됨")
-  };
+  // const handleLogin = () => {
+  //   setIsLoggedIn(true);
+  //   console.log("handleLogin함수가 실행됨")
+  // };
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  }
+  // const handleLogout = () => {
+  //   setIsLoggedIn(false);
+  // }
 
   return (
     <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={ isLoggedIn ? <ProductAll /> : <Navigate to = "/login" />}/>
+        <Route path="/" element={ <ProductAll /> }/>
         <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />}/>
-        <Route path="/product/:id" element={isLoggedIn ? <ProductDetail /> : <Navigate to = "/login" />}/>
+        <Route path="/product/:id" element={<PrivateRoute isLoggedIn={isLoggedIn} />} />
       </Routes>
     </div>
   );

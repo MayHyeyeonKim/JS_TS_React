@@ -31,10 +31,10 @@ const ProductDetail = () => {
     <Col xs={12} md={6} className="product-detail-img">
       <img src={product?.img} />
     </Col>
-    <Col>
-      <div>{product?.title}</div>
-      <div>{product?.price}</div>
-      <div>{product.choice ? "Conscious choice" : ""}</div>
+    <Col xs={12} md={6}>
+    <div className="product-info"> {product.title}</div>
+            <div className="product-info"> {product.price}</div>
+            <div className="choice"> {product.choice ? "Conscious choice" : ""}</div>
       <Dropdown className="drop-down">
       <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
                 Select Size

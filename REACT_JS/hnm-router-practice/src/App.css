@@ -47,19 +47,32 @@
     font-size: 16px;
 }
 
-.product-card{
-    transition: transform 0.3s ease;
-}
-
-.product-card:hover{
-    transform: scale(1.1);
-}
-
 .product-detail-img{
     display: flex;
     justify-content: flex-end;
   }
-
-.drop-down{
+  
+  .product-detail-img img{
+    width: 100%;
+  }
+  .product-info{
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .drop-down{
     margin-top:20px;
-}
+  }
+  
+  .add-button{
+    margin-top:20px;
+    width: 100%;
+  }
+  
+  .card:hover{
+    transform: scale(1.1);
+    z-index: 1;
+  }
+  .hide{
+    visibility:hidden
+  }
+  

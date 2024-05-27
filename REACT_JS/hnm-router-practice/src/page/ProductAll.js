@@ -1,33 +1,55 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
-import ProductCard from '../component/ProductCard';
+import React, { useEffect, useState } from "react";
+import ProductCard from "../component/ProductCard";
+import { Row, Col, Container, Alert } from "react-bootstrap";
+import { useSearchParams } from "react-router-dom";
+
 const ProductAll = () => {
+  let [products, setProducts] = useState([]);
+  const [query, setQuery] = useSearchParams();
+  let [error, setError] = useState("");
 
-  const [productList, setProductList] = useState([]);
+  const getProducts = async () => {
+    try {
+      let keyword = query.get("q") || "";
+      console.log("Keyword from URL:", keyword); // 쿼리 매개변수 값 로그 출력
+      let url = `http://localhost:8000/products?q=${keyword}`;
+      let response = await fetch(url);
+      let data = await response.json();
+      if (data.length < 1) {
+        if (keyword !== "") {
+          setError(`${keyword}와 일치하는 상품이 없습니다`);
+        } else {
+          throw new Error("결과가 없습니다");
+        }
+      }
+      setProducts(data);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
 
-  const getProducts = async ()=>{
-    let url = `http://localhost:8000/products`
-    let response = await fetch(url)
-    let data = await response.json()
-    setProductList(data);
-  }
-  useEffect(()=>{
-    getProducts()
-  },[])
+  useEffect(() => {
+    getProducts();
+  }, [query]);
+  
   return (
-    <div>
-        {/* <h1>ProductAll</h1> */}
-        <Container>
-          <Row>
-          {productList.map((menu)=>(
-            <Col lg={3}><ProductCard item={menu}/></Col>
-          ))}
-          </Row>
-        </Container>
-        <ProductCard />
-    </div>
-  )
-}
+    <Container>
+      {error ? (
+        <Alert variant="danger" className="text-center">
+          {error}
+        </Alert>
+      ) : (
+        <Row>
+          {products.length > 0 &&
+            products.map((item) => (
+              <Col md={3} sm={12} key={item.id}>
+                <ProductCard item={item} />
+              </Col>
+            ))}
+        </Row>
+      )}
+    </Container>
+  );
+};
 
-export default ProductAll
+export default ProductAll;

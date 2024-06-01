@@ -24,10 +24,10 @@ function App() {
   //   console.log(isLoggedIn)
   // },[isLoggedIn])
 
-  // const handleLogin = () => {
-  //   setIsLoggedIn(true);
-  //   console.log("handleLogin함수가 실행됨")
-  // };
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    console.log("handleLogin함수가 실행됨")
+  };
 
   // const handleLogout = () => {
   //   setIsLoggedIn(false);

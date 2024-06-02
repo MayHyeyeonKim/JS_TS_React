@@ -38,8 +38,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={ <ProductAll /> }/>
-        <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn} />}/>
-        <Route path="/product/:id" element={<PrivateRoute isLoggedIn={isLoggedIn} />} />
+        <Route path="/login" element={<LoginPage />}/>
+        <Route path="/product/:id" element={<PrivateRoute />} />
       </Routes>
     </div>
   );

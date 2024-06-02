@@ -5,7 +5,7 @@ let initialState = {
 }
 
 function authenticateReducer(state=initialState, action){
-    console.log('Reducer action:', action);
+    console.log('어뗸디케이트리듀서에서 Reducer action:', action);
 
     let { type, payload } = action;
     switch(type){

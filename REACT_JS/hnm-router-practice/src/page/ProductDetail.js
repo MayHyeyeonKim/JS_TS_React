@@ -1,24 +1,31 @@
+// src/page/ProductDetail.js
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Button, Dropdown, Alert } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { productAction } from '../redux/actions/productAction';
+import { getProductDetail } from '../redux/actions/productAction';
 
 const ProductDetail = () => {
   const [error, setError] = useState("");
-  const { id } = useParams();
-  const products = useSelector((state) => state.product.selectedItem);
-  const product = products.find((item) => item.id === parseInt(id)); // id에 해당하는 제품 찾기
-  console.log("프로덕트디테일 파일임 : 프로덕트가 뭐냐? : ", product);
+  let { id } = useParams();
+  const product = useSelector((state) => state.product.selectedItem);
   const dispatch = useDispatch();
 
-  const getProductDetail = async () => {
-    dispatch(productAction.getProductDetail(id));
+  const fetchProductDetail = async () => {
+    try {
+      await dispatch(getProductDetail(id));
+    } catch (e) {
+      setError(e.message);
+    }
   };
 
   useEffect(() => {
-    getProductDetail();
+    fetchProductDetail();
   }, [id]);
+
+  useEffect(() => {
+    console.log("Product updated:", product);
+  }, [product]);
 
   if (!product) return <h1>Loading</h1>; // 제품 로딩 중 표시
 
@@ -31,21 +38,24 @@ const ProductDetail = () => {
       ) : (
         <Row>
           <Col xs={12} md={6} className="product-detail-img">
-            <img src={product.img || 'placeholder.jpg'} alt={product.title || 'Product Image'} />
+            <img src={product.img ? product.img : 'placeholder.jpg'} alt={product.title ? product.title : 'Product Image'} />
           </Col>
           <Col xs={12} md={6}>
-            <div className="product-info"> {product.title}</div>
-            <div className="product-info"> {product.price}</div>
-            <div className="choice"> {product.choice ? "Conscious choice" : ""}</div>
+            <div className="product-info">{product.title ? product.title : 'No title available'}</div>
+            <div className="product-info">{product.price ? `$${product.price}` : 'No price available'}</div>
+            <div className="choice">{product.choice ? "Conscious choice" : ""}</div>
             <Dropdown className="drop-down">
               <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
                 Select Size
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                {product.size && product.size.length > 0 > 0 &&
+                {product.size && product.size.length > 0 ? (
                   product.size.map((item, index) => (
                     <Dropdown.Item key={index} href="#/action-1">{item}</Dropdown.Item>
-                  ))}
+                  ))
+                ) : (
+                  <Dropdown.Item disabled>No sizes available</Dropdown.Item>
+                )}
               </Dropdown.Menu>
             </Dropdown>
             <Button variant="dark" className="add-button">
